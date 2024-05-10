@@ -1,9 +1,11 @@
 steps:
-  - name: 'gcr.io/cloud-builders/gcloud'
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+    entrypoint: 'gcloud'
     args: ['app', 'deploy', 'app.yaml']
   - name: 'gcr.io/cloud-builders/npm'
     args: ['install']
-  # - name: 'gcr.io/cloud-builders/npm'
-  #   args: ['run', 'build']
-  - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['app', 'services', 'set-traffic', '--splits', 'merncrud=>100']
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+    entrypoint: 'gcloud'
+    args: ['app', 'services', 'set-traffic', '--splits', 'merncrud=1.0']
+
+
