@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 
 const students = [
   {
@@ -144,6 +145,13 @@ const students = [
   },
 ];
 
+app.use(cors(
+  {
+    origin: '*',
+  }
+));
+app.use(express.json());
+
 app.get('/', (req, res) => {
   res.send('Server is running');
 })
@@ -155,5 +163,6 @@ app.get('/students', (req, res) => {
 app.listen(3001, () => {
   console.log('Server is running on port 3001');
 });
+
 
 
