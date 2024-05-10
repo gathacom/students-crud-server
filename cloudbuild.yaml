@@ -1,17 +1,6 @@
+# This is script for https://cloud.google.com/cloud-build/
 steps:
-  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim@sha256:65718a0657519503500ec010a3503613132528b5600000000000000000000000
-    entrypoint: 'gcloud'
-    args: ['app', 'deploy', 'app.yaml']
-  - name: 'gcr.io/cloud-builders/npm'
-    args: ['install']
-  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim@sha256:65718a0657519503500ec010a3503613132528b5600000000000000000000000
-    entrypoint: 'gcloud'
-    args:
-      - 'app'
-      - 'services'
-      - 'set-traffic'
-      - '--splits'
-      - 'prak-tcc-e2/default/merncrud=1.0,prak-tcc-e2/server-students/merncrud=1.0'
-      - '--splits-method'
-      - 'ip'
-
+- name: 'gcr.io/cloud-builders/npm'
+  args: ['install']
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['app', 'deploy','app.yaml']
