@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const winston = require('winston');
 
 const students = [
   {
@@ -158,6 +159,15 @@ app.get('/', (req, res) => {
 
 app.get('/students', (req, res) => {
   res.json(students);
+});
+
+app.get('/health', (req, res) => {
+  res.send('OK');
+});
+
+app.use((err, req, res, next) => {
+  winston.error(err);
+  res.status(500).send({ error: 'Internal Server Error' });
 });
 
 app.listen(3001, () => {
