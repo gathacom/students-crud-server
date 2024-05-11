@@ -1,7 +1,7 @@
-const express = require('express');
+import express from 'express';
+import cors from 'cors';
+import winston from 'winston';
 const app = express();
-const cors = require('cors');
-const winston = require('winston');
 
 const students = [
   {
