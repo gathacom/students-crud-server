@@ -157,7 +157,7 @@ app.get('/', (req, res) => {
   res.send('Server is running');
 })
 
-app.get('/api/students', (req, res) => {
+app.get('/students', (req, res) => {
   res.json(students);
 });
 
