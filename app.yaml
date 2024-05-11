@@ -1,5 +1,4 @@
 runtime: nodejs18
-vm: true
 instance_class: F1
 service: server-students
 readiness_check:
