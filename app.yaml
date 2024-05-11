@@ -1,3 +1,8 @@
 runtime: nodejs18
 instance_class: F1
 service: server-students
+env_variables:
+  PORT: 3001
+handlers:
+  - url: /.*
+    script: auto
